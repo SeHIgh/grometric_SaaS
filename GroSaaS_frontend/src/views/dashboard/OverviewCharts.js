@@ -1,0 +1,142 @@
+import React from 'react'
+import { CCard, CCardBody, CCol, CCardHeader, CRow } from '@coreui/react'
+import {
+  CChartBar,
+  CChartDoughnut,
+  CChartLine,
+  CChartPie,
+  CChartPolarArea,
+  CChartRadar,
+} from '@coreui/react-chartjs'
+import { DocsLink } from 'src/components'
+
+const OverviewCharts = () => {
+  const random = () => Math.round(Math.random() * 100)
+
+  return (
+    <CRow>
+      {/* 길이를 맞추기 위한 col 생성 */}
+      {/* 예) 12 -> 6, 6 이면 1줄에 2개 */}
+      {/* 예) 12 -> 3, 3, 3, 3 이면 1줄에 4개 */}
+      {/* 예) 12 -> 6, 6, 6, 6 이면 1줄에 2개씩 총 2줄 */}
+      <CCol xs={12}></CCol>
+      <CCol xs={3}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            Bar Chart <DocsLink name="chart" />
+          </CCardHeader>
+          <CCardBody>
+            <CChartBar
+              data={{
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                  {
+                    label: 'GitHub Commits',
+                    backgroundColor: '#f87979',
+                    data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
+                  },
+                ],
+              }}
+              labels="months"
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+              }}
+              height={231}
+            />
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={3}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            Line Chart <DocsLink name="chart" />
+          </CCardHeader>
+          <CCardBody>
+            <CChartLine
+              data={{
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                  {
+                    label: 'My First dataset',
+                    backgroundColor: 'rgba(220, 220, 220, 0.2)',
+                    borderColor: 'rgba(220, 220, 220, 1)',
+                    pointBackgroundColor: 'rgba(220, 220, 220, 1)',
+                    pointBorderColor: '#fff',
+                    data: [random(), random(), random(), random(), random(), random(), random()],
+                  },
+                  {
+                    label: 'My Second dataset',
+                    backgroundColor: 'rgba(151, 187, 205, 0.2)',
+                    borderColor: 'rgba(151, 187, 205, 1)',
+                    pointBackgroundColor: 'rgba(151, 187, 205, 1)',
+                    pointBorderColor: '#fff',
+                    data: [random(), random(), random(), random(), random(), random(), random()],
+                  },
+                ],
+              }}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+              }}
+              height={231}
+            />
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={3}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            Doughnut Chart <DocsLink name="chart" />
+          </CCardHeader>
+          <CCardBody>
+            <CChartDoughnut
+              data={{
+                labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+                datasets: [
+                  {
+                    backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+                    data: [40, 20, 80, 10],
+                  },
+                ],
+              }}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+              }}
+              height={231}
+            />
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={3}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            Pie Chart <DocsLink name="chart" />{' '}
+          </CCardHeader>
+          <CCardBody>
+            <CChartPie
+              data={{
+                labels: ['Red', 'Green', 'Yellow'],
+                datasets: [
+                  {
+                    data: [300, 50, 100],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                  },
+                ],
+              }}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+              }}
+              height={231}
+            />
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
+  )
+}
+
+export default OverviewCharts
