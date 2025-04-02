@@ -1,0 +1,42 @@
+// 기존 템플릿에서 제공하는 컴포넌트의 스타일을 수정하는 파일
+@use '@coreui/coreui/scss/variables' as *;
+@use '@coreui/coreui/scss/coreui'; // CoreUI의 Sass 파일 불러오기
+@use '@coreui/coreui/scss/mixins/color-mode' as *; // dark모드에 따른 색상 변경을 위한 color-mode 믹스인 추가
+@use './custom-variables' as *;
+
+.footer-copyright {
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  font-weight: 700;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  grid-template-rows: 0.5fr 1fr;
+  gap: 1rem;
+
+  height: 100%;
+}
+
+/* 세 번째 카드가 첫 번째 열과 두 번째 열을 차지하도록 설정 */
+.grid-item-large {
+  grid-row: span 2; /* 두 열을 차지 */
+}
+
+
+// dropdown-menu 색상 커스텀 (전체 색상 통일)
+.dropdown-menu {
+  --cui-dropdown-link-active-bg: #{$dark};
+  --cui-dropdown-link-active-color: #{$light};
+}
+
+@include color-mode(dark) {
+  .dropdown-menu {
+    --cui-dropdown-link-active-bg: #{$light};
+    --cui-dropdown-link-active-color: #{$dark};
+  }
+}

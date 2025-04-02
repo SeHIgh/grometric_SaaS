@@ -7,7 +7,7 @@ import './scss/reset.scss'
 import './scss/style.scss'
 
 // We use those styles to show code examples, you should remove them in your application.
-import './scss/examples.scss'
+// import './scss/examples.scss'
 
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
