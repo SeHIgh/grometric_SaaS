@@ -8,10 +8,10 @@ import {
 } from '@coreui/react-chartjs'
 import { DocsLink } from 'src/components'
 
-// ✅ 추가: react-grid-layout 불러오기 (드래그 & 리사이징을 위한 핵심 라이브러리)
+// react-grid-layout (배치 수정 & 리사이징을 위한 라이브러리)
 import RGL, { WidthProvider } from 'react-grid-layout'
-import 'react-grid-layout/css/styles.css' // ✅ 추가: layout CSS
-import 'react-resizable/css/styles.css'   // ✅ 추가: resizing CSS
+import 'react-grid-layout/css/styles.css'
+import 'react-resizable/css/styles.css'
 
 const ReactGridLayout = WidthProvider(RGL) // ✅ WidthProvider로 감싸야 반응형 동작
 
@@ -19,18 +19,19 @@ const OverviewCharts = () => {
   const random = () => Math.round(Math.random() * 100)
 
   return (
-    // ✅ 추가: 기존 <CRow> 대신 ReactGridLayout 사용하여 레이아웃 구성
+    // 기존 <CRow> 대신 ReactGridLayout 사용하여 레이아웃 구성
     <ReactGridLayout
       className="layout"
-      cols={12}            // 12칸 그리드
+      cols={12}            // 12 그리드 시스템 (bootstrap이 12그리드 기반) (1그리드 = 1200/12 = 100px)
       rowHeight={100}      // 한 행의 높이(px)
-      width={1200}         // 전체 레이아웃 너비
-      isResizable={true}   // ✅ 꼭지점 리사이징 허용
-      isDraggable={true}   // ✅ 드래그 앤 드롭 허용
-      margin={[16, 16]}    // 컴포넌트 간 여백
+      width={1200}         // 전체 레이아웃 너비(px)
+      isResizable={true}   
+      isDraggable={true}   
+      margin={[16, 16]}    // 컴포넌트 간 (가로여백, 세로여백)
     >
-      {/* ✅ 차트 각각은 div로 감싸고 data-grid 속성으로 위치와 크기 지정 */}
+      {/* data-grid 속성으로 위치,크기,최소크기 지정. 단위는 그리드 */}
       <div key="bar" data-grid={{ x: 0, y: 0, w: 4, h: 3, minW: 3, minH: 2 }}>
+      
         <CCard className="h-100">
           <CCardHeader>Bar Chart <DocsLink name="chart" /></CCardHeader>
           <CCardBody>
