@@ -21,7 +21,6 @@
 
 // (끝) 헤더 스타일
 
-
 // 메인 컨텐츠 스타일
 
 // 대시보드
@@ -40,7 +39,7 @@
     gap: 16px;
     // height: 100vh;
     flex-grow: 1;
-    
+
     > .body {
       display: flex;
       flex-direction: column;
@@ -53,10 +52,10 @@
 
       > .contents-container {
         display: flex;
-        flex-direction: column;
+        flex-direction: center;
         justify-content: center;
         align-items: center;
-        
+
         margin: 0;
         padding: 0 16px;
         flex-grow: 1;
@@ -68,25 +67,37 @@
         > .container-grid {
           display: grid;
           grid-template-columns: 1.5fr 0.5fr;
-          grid-template-rows: 0.5fr 1fr;
-          gap: 1rem;
-        
+          grid-template-rows: 0.5fr 0.5fr;
+          gap: 16px;
+
           flex-grow: 1;
           min-height: 0; // flex-grow 사용 시 필요
-          
-          /* 세 번째 카드가 첫 번째 열과 두 번째 열을 차지하도록 설정 */
-          > .grid-item-large {
+
+          > .overview-section {
+            // & .chart-section {
+            //   flex-grow: 1;
+            //   background-color: rgba(0,0,0,0.1);
+            //   border-radius: 10px;
+            //   padding: 12px 0;
+            //   margin: 0;
+            // }
+            & .col {
+              padding: 0;
+              margin: 0;
+            }
+          }
+          > .alert-section {
             grid-row: span 2; /* 두 열을 차지 */
           }
+          > .cvelist-section {
+          }
         }
-        
       }
     }
   }
 }
 
 // (끝) 메인 컨텐츠 스타일
-
 
 // 푸터 스타일
 
@@ -99,3 +110,77 @@
   }
 }
 // (끝) 푸터 스타일
+
+// 템플릿 제공 컴포넌트 스타일 재정의
+.row {
+  padding: 0;
+  margin: 0;
+}
+
+.col {
+  padding: 0;
+  margin: 0;
+}
+// (끝) 템플릿 제공 컴포넌트 스타일 재정의
+
+// 대시보드 - 차트 섹션션
+.chart-section {
+  flex-grow: 1;
+  background-color: rgb($dark, 0.1);
+  border-radius: 10px;
+  padding: 12px 0;
+  margin: 0;
+  & .chart-card {
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid transparent;
+    flex-grow: 1;
+    min-height: 0; // flex-grow 사용 시 필요
+    transition: all 0.3s ease-in-out;
+    > .card-header {
+      background-color: transparent;
+      border: none;
+    }
+    > .card-body {
+      background-color: transparent;
+      border: none;
+    }
+  }
+}
+
+@include color-mode(dark) {
+  .chart-section {
+    background-color: rgb($light, 0.1);
+  }
+}
+
+.chart-card:hover {
+  // background-color: rgba($dark, 0.1);
+  background-color: $light;
+  > .card-header {
+  }
+  > .card-body {
+  }
+}
+@include color-mode(dark) {
+  .chart-card:hover {
+    // background-color: rgba($light, 0.1);
+    background-color: $dark;
+  }
+}
+
+// 대시보드 - CVE 리스트 테이블
+.cvelist-table{
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  & table{
+    > tbody{
+      > tr{
+        > td{
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
