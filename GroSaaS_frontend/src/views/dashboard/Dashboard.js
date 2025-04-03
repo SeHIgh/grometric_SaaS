@@ -3,6 +3,7 @@ import classNames from 'classnames'
 
 import {
   CAvatar,
+  CBadge,
   CButton,
   CButtonGroup,
   CCard,
@@ -88,94 +89,41 @@ const Dashboard = () => {
     { title: 'LinkedIn', icon: cibLinkedin, percent: 8, value: '27,319' },
   ]
 
-  const tableExample = [
+  const cvelistExample = [
     {
-      avatar: { src: avatar1, status: 'success' },
-      user: {
-        name: 'Yiorgos Avraamu',
-        new: true,
-        registered: 'Jan 1, 2023',
-      },
-      country: { name: 'USA', flag: cifUs },
-      usage: {
-        value: 50,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'success',
-      },
-      payment: { name: 'Mastercard', icon: cibCcMastercard },
-      activity: '10 sec ago',
+      CVE_ID: 'CVE-2024-10952',
+      Severity: 'High',
+      Date: '2024-12-03',
+      Description:
+        "WordPress의 'The Authors List' 플러그인은 2.0.4 버전까지 'update_authors_list_ajax' AJAX 액션을 통해 임의의 숏코드 실행 취약점이 있습니다. 이를 통해 인증되지 않은 공격자가 임의의 숏코드를 실행할 수 있습니다.",
     },
     {
-      avatar: { src: avatar2, status: 'danger' },
-      user: {
-        name: 'Avram Tarasios',
-        new: false,
-        registered: 'Jan 1, 2023',
-      },
-      country: { name: 'Brazil', flag: cifBr },
-      usage: {
-        value: 22,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'info',
-      },
-      payment: { name: 'Visa', icon: cibCcVisa },
-      activity: '5 minutes ago',
+      CVE_ID: 'CVE-2024-49392',
+      Severity: 'Medium',
+      Date: '2024-10-17',
+      Description:
+        'Acronis Cyber Files(Windows) 9.0.0x24 이전 버전의 등록 초대 페이지에서 저장된 크로스 사이트 스크립팅(XSS) 취약점이 발견되었습니다.',
     },
     {
-      avatar: { src: avatar3, status: 'warning' },
-      user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2023' },
-      country: { name: 'India', flag: cifIn },
-      usage: {
-        value: 74,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'warning',
-      },
-      payment: { name: 'Stripe', icon: cibCcStripe },
-      activity: '1 hour ago',
+      CVE_ID: 'CVE-2024-3081',
+      Severity: 'Low',
+      Date: '2024-03-29',
+      Description:
+        "EasyCorp의 EasyAdmin 4.8.9 버전까지 'assets/js/autocomplete.js' 파일의 'Autocomplete' 기능에서 크로스 사이트 스크립팅(XSS) 취약점이 발견되었습니다.",
     },
     {
-      avatar: { src: avatar4, status: 'secondary' },
-      user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2023' },
-      country: { name: 'France', flag: cifFr },
-      usage: {
-        value: 98,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'danger',
-      },
-      payment: { name: 'PayPal', icon: cibCcPaypal },
-      activity: 'Last month',
+      CVE_ID: 'CVE-2023-3543',
+      Severity: 'Medium',
+      Date: '2023-07-07',
+      Description:
+        "GZ Scripts의 Availability Booking Calendar PHP 1.8 버전의 'load.php' 파일에서 크로스 사이트 스크립팅(XSS) 취약점이 발견되었습니다.",
     },
     {
-      avatar: { src: avatar5, status: 'success' },
-      user: {
-        name: 'Agapetus Tadeáš',
-        new: true,
-        registered: 'Jan 1, 2023',
-      },
-      country: { name: 'Spain', flag: cifEs },
-      usage: {
-        value: 22,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'primary',
-      },
-      payment: { name: 'Google Wallet', icon: cibCcApplePay },
-      activity: 'Last week',
-    },
-    {
-      avatar: { src: avatar6, status: 'danger' },
-      user: {
-        name: 'Friderik Dávid',
-        new: true,
-        registered: 'Jan 1, 2023',
-      },
-      country: { name: 'Poland', flag: cifPl },
-      usage: {
-        value: 43,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
-        color: 'success',
-      },
-      payment: { name: 'Amex', icon: cibCcAmex },
-      activity: 'Last week',
+      CVE_ID: 'CVE-2023-38054',
+      Severity: 'High',
+      Date: '2024-07-09',
+      Description:
+        "'/customers/{customerId}' 경로의 GET, PUT, DELETE 메소드에서 낮은 권한의 사용자가 다른 사용자의 데이터를 조회, 수정 또는 삭제할 수 있는 취약점이 발견되었습니다.",
     },
   ]
 
@@ -191,8 +139,8 @@ const Dashboard = () => {
     <div className="container-grid">
       {/* 위젯 */}
       {/* <WidgetsDropdown className="mb-4" /> */}
-      <CCard className="mb-4">
-        <CCardBody>
+      <CCard className="overview-section">
+        <CCardBody className="flex flex-direction-column gap-1">
           <CRow>
             <CCol sm={5}>
               <h4 id="traffic" className="card-title mb-0">
@@ -200,10 +148,16 @@ const Dashboard = () => {
               </h4>
               <div className="small text-body-secondary mb-2">{currentTime.toLocaleString()}</div>
             </CCol>
+            <CCol sm={7} className="m-0 p-0">
+              <CButton color="outline-dark" className="float-end border-2">
+                <span>VM Monitoring </span>
+                <CIcon icon={cilArrowRight} />
+              </CButton>
+            </CCol>
           </CRow>
           <OverviewCharts />
         </CCardBody>
-        <CCardFooter>
+        {/* <CCardFooter>
           <CRow
             xs={{ cols: 1, gutter: 4 }}
             sm={{ cols: 2 }}
@@ -226,9 +180,9 @@ const Dashboard = () => {
               </CCol>
             ))}
           </CRow>
-        </CCardFooter>
+        </CCardFooter> */}
       </CCard>
-      <CCard className="grid-item-large">
+      <CCard className="alert-section">
         <CCardBody>
           <CRow>
             <CCol sm={5}>
@@ -247,7 +201,7 @@ const Dashboard = () => {
           </CRow>
         </CCardBody>
       </CCard>
-      <CCard>
+      <CCard className="cvelist-section">
         <CCardBody>
           <CRow>
             <CCol sm={5}>
@@ -271,54 +225,46 @@ const Dashboard = () => {
             </CCol>
           </CRow>
           <CRow>
-            <CTable align="middle" className="mt-2 mb-0 border" hover responsive>
+            <CTable align="middle" className="cvelist-table mt-2 mb-0 border" hover responsive>
               <CTableHead className="text-nowrap">
                 <CTableRow>
                   <CTableHeaderCell className="bg-body-tertiary text-center">
-                    <CIcon icon={cilPeople} />
+                    CVE ID
                   </CTableHeaderCell>
-                  <CTableHeaderCell className="bg-body-tertiary">User</CTableHeaderCell>
                   <CTableHeaderCell className="bg-body-tertiary text-center">
-                    Country
+                    Severity
                   </CTableHeaderCell>
-                  <CTableHeaderCell className="bg-body-tertiary">Usage</CTableHeaderCell>
+                  <CTableHeaderCell className="bg-body-tertiary text-center">Date</CTableHeaderCell>
                   <CTableHeaderCell className="bg-body-tertiary text-center">
-                    Payment Method
+                    Description
                   </CTableHeaderCell>
-                  <CTableHeaderCell className="bg-body-tertiary">Activity</CTableHeaderCell>
                 </CTableRow>
               </CTableHead>
-              <CTableBody>
-                {tableExample.map((item, index) => (
+              <CTableBody className="text-nowrap">
+                {cvelistExample.map((item, index) => (
                   <CTableRow v-for="item in tableItems" key={index}>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src={item.avatar.src} status={item.avatar.status} />
-                    </CTableDataCell>
-                    <CTableDataCell>
-                      <div>{item.user.name}</div>
-                      <div className="small text-body-secondary text-nowrap">
-                        <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '}
-                        {item.user.registered}
-                      </div>
+                      <p>{item.CVE_ID}</p>
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon={item.country.flag} title={item.country.name} />
-                    </CTableDataCell>
-                    <CTableDataCell>
-                      <div className="d-flex justify-content-between text-nowrap">
-                        <div className="fw-semibold">{item.usage.value}%</div>
-                        <div className="ms-3">
-                          <small className="text-body-secondary">{item.usage.period}</small>
-                        </div>
-                      </div>
-                      <CProgress thin color={item.usage.color} value={item.usage.value} />
+                      <CBadge
+                        color={
+                          item.Severity === 'High'
+                            ? 'danger'
+                            : item.Severity === 'Medium'
+                              ? 'warning'
+                              : 'light'
+                        }
+                        textBgColor={item.Severity === 'Low' ? 'light' : 'primary'}
+                      >
+                        {item.Severity}
+                      </CBadge>
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon={item.payment.icon} />
+                      <p>{item.Date}</p>
                     </CTableDataCell>
-                    <CTableDataCell>
-                      <div className="small text-body-secondary text-nowrap">Last login</div>
-                      <div className="fw-semibold text-nowrap">{item.activity}</div>
+                    <CTableDataCell className="text-ellipsis">
+                      <p>{item.Description}</p>
                     </CTableDataCell>
                   </CTableRow>
                 ))}

@@ -14,16 +14,16 @@ const OverviewCharts = () => {
   const random = () => Math.round(Math.random() * 100)
 
   return (
-    <CRow>
+    <CRow className="chart-section">
       {/* 길이를 맞추기 위한 col 생성 */}
       {/* 예) 12 -> 6, 6 이면 1줄에 2개 */}
       {/* 예) 12 -> 3, 3, 3, 3 이면 1줄에 4개 */}
       {/* 예) 12 -> 6, 6, 6, 6 이면 1줄에 2개씩 총 2줄 */}
       <CCol xs={12}></CCol>
       <CCol xs={3}>
-        <CCard className="mb-4">
+        <CCard className="chart-card">
           <CCardHeader>
-            Bar Chart <DocsLink name="chart" />
+            <span>Bar Chart</span>
           </CCardHeader>
           <CCardBody>
             <CChartBar
@@ -42,16 +42,14 @@ const OverviewCharts = () => {
                 responsive: true,
                 maintainAspectRatio: false,
               }}
-              height={231}
+              // height={231}
             />
           </CCardBody>
         </CCard>
       </CCol>
       <CCol xs={3}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Line Chart <DocsLink name="chart" />
-          </CCardHeader>
+        <CCard className="chart-card">
+          <CCardHeader>Line Chart </CCardHeader>
           <CCardBody>
             <CChartLine
               data={{
@@ -79,16 +77,14 @@ const OverviewCharts = () => {
                 responsive: true,
                 maintainAspectRatio: false,
               }}
-              height={231}
+              // height={231}
             />
           </CCardBody>
         </CCard>
       </CCol>
       <CCol xs={3}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Doughnut Chart <DocsLink name="chart" />
-          </CCardHeader>
+        <CCard className="chart-card">
+          <CCardHeader>Doughnut Chart </CCardHeader>
           <CCardBody>
             <CChartDoughnut
               data={{
@@ -104,16 +100,14 @@ const OverviewCharts = () => {
                 responsive: true,
                 maintainAspectRatio: false,
               }}
-              height={231}
+              // height={231}
             />
           </CCardBody>
         </CCard>
       </CCol>
       <CCol xs={3}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            Pie Chart <DocsLink name="chart" />{' '}
-          </CCardHeader>
+        <CCard className="chart-card">
+          <CCardHeader>Pie Chart</CCardHeader>
           <CCardBody>
             <CChartPie
               data={{
@@ -130,7 +124,7 @@ const OverviewCharts = () => {
                 responsive: true,
                 maintainAspectRatio: false,
               }}
-              height={231}
+              // height={231}
             />
           </CCardBody>
         </CCard>
