@@ -1,5 +1,7 @@
 import React from 'react'
 
+// View 폴더에 있는 페이지 컴포넌트들을 라우팅
+
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))

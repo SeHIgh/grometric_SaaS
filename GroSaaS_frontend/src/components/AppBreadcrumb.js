@@ -1,3 +1,4 @@
+// 경로를 UI로 표현한 컴포넌트
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 

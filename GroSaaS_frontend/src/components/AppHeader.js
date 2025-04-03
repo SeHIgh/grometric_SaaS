@@ -1,3 +1,4 @@
+// Header 요소를 나타내는 컴포넌트
 import React, { useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
@@ -47,7 +48,7 @@ const AppHeader = () => {
 
   return (
     // Header
-    <CHeader position="sticky" className="mb-4 p-0" ref={headerRef}>
+    <CHeader position="sticky" className="mb-0 p-0" ref={headerRef}>
       <CContainer className="border-bottom px-2" fluid>
         <CHeaderToggler
           onClick={() => dispatch({ type: 'set', sidebarShow: !sidebarShow })}

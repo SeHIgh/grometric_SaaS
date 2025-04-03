@@ -1,3 +1,5 @@
+// components 허브
+// index.js로 통합 export 하여 유지보수성 & 가독성 향상
 import AppBreadcrumb from './AppBreadcrumb'
 import AppContent from './AppContent'
 import AppFooter from './AppFooter'

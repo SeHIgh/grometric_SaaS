@@ -1,3 +1,4 @@
+// Footer 요소를 나타내는 컴포넌트
 import React from 'react'
 import { CFooter } from '@coreui/react'
 
@@ -5,7 +6,7 @@ const AppFooter = () => {
   return (
     <CFooter className="px-4">
       <div>
-        <span className="ms-1">
+        <span className="ms-0">
           Copyright &copy; 2025 GroSaaS. All rights reserved. v2.0.0-beta20
         </span>
       </div>

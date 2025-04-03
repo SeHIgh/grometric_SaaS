@@ -1,3 +1,4 @@
+// Sidebar의 Navigation 요소를 나타내는 컴포넌트
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'

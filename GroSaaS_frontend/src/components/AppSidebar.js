@@ -1,3 +1,4 @@
+// Sidebar 요소를 나타내는 컴포넌트
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
