@@ -74,13 +74,9 @@
           min-height: 0; // flex-grow 사용 시 필요
 
           > .overview-section {
-            // & .chart-section {
-            //   flex-grow: 1;
-            //   background-color: rgba(0,0,0,0.1);
-            //   border-radius: 10px;
-            //   padding: 12px 0;
-            //   margin: 0;
-            // }
+            & .card-body {
+              padding: 12px;
+            }
             & .col {
               padding: 0;
               margin: 0;
@@ -88,8 +84,18 @@
           }
           > .alert-section {
             grid-row: span 2; /* 두 열을 차지 */
+            & .card-body {
+              padding: 12px;
+            }
           }
           > .cvelist-section {
+            & .card-body {
+              padding: 12px;
+            }
+            & .col {
+              padding: 0;
+              margin: 0;
+            }
           }
         }
       }
@@ -170,17 +176,113 @@
 }
 
 // 대시보드 - CVE 리스트 테이블
-.cvelist-table{
+.cvelist-table {
   margin-top: 8px;
   margin-bottom: 8px;
+  border-collapse: separate;
+  border-spacing: 0;
   border-radius: 10px;
-  & table{
-    > tbody{
-      > tr{
-        > td{
+  overflow: hidden;
+  & table {
+    > tbody {
+      > tr {
+        > td {
           font-size: 10px;
         }
       }
     }
+  }
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// CVE List 테이블 열 너비 지정
+.cve-id-column {
+  width: 150px;
+  > p {
+    width: 150px;
+  }
+}
+
+.severity-column {
+  width: 100px;
+  > p {
+    width: 100px;
+  }
+}
+
+.date-column {
+  width: 120px;
+  > p {
+    width: 120px;
+  }
+}
+
+.description-column {
+  width: 200px;
+  white-space: nowrap;
+  > p {
+    width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 768px) {
+  .description-column {
+    width: 200px; /* 모바일에서는 더 짧게 설정 */
+  }
+}
+
+.table-responsive {
+  padding: 0;
+}
+
+// CButton 컴포넌트 Style 정의
+// .btn {
+//   --cui-btn-color: #{$dark}; // 기본 텍스트 색상
+//   --cui-btn-bg: transparent; // 기본 배경 색상
+//   --cui-btn-border-color: #{$dark}; // 기본 테두리 색상
+//   --cui-btn-active-color: #{$light}; // 활성 상태 텍스트 색상
+//   --cui-btn-active-bg: #{$dark}; // 활성 상태 배경 색상
+//   --cui-btn-active-border-color: #{$light}; // 활성 상태 테두리 색상
+// }
+.btn {
+  --cui-btn-color: #{$dark};
+  --cui-btn-bg: transparent;
+  --cui-btn-border-color: #{$dark};
+  --cui-btn-active-color: #{$light}; // 활성 상태 텍스트 색상
+  --cui-btn-active-bg: #{$dark}; // 활성 상태 배경 색상
+  --cui-btn-active-border-color: #{$dark}; // 활성 상태 
+}
+@include color-mode(dark) {
+  .btn {
+    --cui-btn-color: #{$light};
+    --cui-btn-bg: $dark;
+    --cui-btn-border-color: #{$light};
+  }
+}
+.btn:active,
+.btn.active {
+  color: var(--cui-btn-active-color);
+  background-color: var(--cui-btn-active-bg);
+  border-color: var(--cui-btn-active-border-color);
+}
+
+@include color-mode(dark) {
+  .btn:hover{
+    color: var(--cui-btn-active-bg);
+    background-color: var(--cui-btn-active-color);
+    border-color: var(--cui-btn-active-color);
+  }
+  .btn:active,
+  .btn.active {
+    color: var(--cui-btn-active-bg);
+    background-color: var(--cui-btn-active-color);
+    border-color: var(--cui-btn-active-color);
   }
 }

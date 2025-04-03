@@ -142,13 +142,13 @@ const Dashboard = () => {
       <CCard className="overview-section">
         <CCardBody className="flex flex-direction-column gap-1">
           <CRow>
-            <CCol sm={5}>
+            <CCol sm={5} className="h-[40px]">
               <h4 id="traffic" className="card-title mb-0">
                 Overview
               </h4>
-              <div className="small text-body-secondary mb-2">{currentTime.toLocaleString()}</div>
+              <div className="small text-body-secondary mb-0">{currentTime.toLocaleString()}</div>
             </CCol>
-            <CCol sm={7} className="m-0 p-0">
+            <CCol sm={7} className="m-0 p-0 d-flex justify-content-end align-items-center">
               <CButton color="outline-dark" className="float-end border-2">
                 <span>VM Monitoring </span>
                 <CIcon icon={cilArrowRight} />
@@ -190,8 +190,8 @@ const Dashboard = () => {
                 Alert
               </h4>
             </CCol>
-            <CCol sm={7} className="d-none d-md-block">
-              <CButton color="outline-secondary" className="float-end me-3">
+            <CCol sm={7} className="d-flex align-items-center d-md-block">
+              <CButton color="outline-dark" className="float-end me-0 border-2">
                 <CIcon icon={cilArrowRight} />
               </CButton>
             </CCol>
@@ -204,18 +204,18 @@ const Dashboard = () => {
       <CCard className="cvelist-section">
         <CCardBody>
           <CRow>
-            <CCol sm={5}>
-              <h4 id="cvelist" className="card-title mb-10">
+            <CCol sm={5} className="d-flex align-items-center">
+              <h4 id="cvelist" className="card-title mb-0">
                 CVE List
               </h4>
             </CCol>
-            <CCol sm={7} className="d-none d-md-block">
-              <CButtonGroup className="float-end me-3">
-                {['F5 Updates', 'VM Updates'].map((value) => (
+            <CCol sm={7} className="m-0 p-0 d-none d-md-block">
+              <CButtonGroup className="float-end">
+                {['F5 Updates', 'VM Updates'].map((value, index) => (
                   <CButton
-                    color="outline-secondary"
+                    color="outline-dark"
                     key={value}
-                    className="mx-0"
+                    className={`mx-0 border-2 ${index === 0 ? 'active' : ''}`}
                     active={value === 'Type'}
                   >
                     {value}
@@ -225,17 +225,19 @@ const Dashboard = () => {
             </CCol>
           </CRow>
           <CRow>
-            <CTable align="middle" className="cvelist-table mt-2 mb-0 border" hover responsive>
+            <CTable align="middle" className="cvelist-table mt-2 mb-0 p-0 border" hover responsive>
               <CTableHead className="text-nowrap">
                 <CTableRow>
-                  <CTableHeaderCell className="bg-body-tertiary text-center">
+                  <CTableHeaderCell className="cve-id-column bg-body-tertiary text-center">
                     CVE ID
                   </CTableHeaderCell>
-                  <CTableHeaderCell className="bg-body-tertiary text-center">
+                  <CTableHeaderCell className="severity-column bg-body-tertiary text-center">
                     Severity
                   </CTableHeaderCell>
-                  <CTableHeaderCell className="bg-body-tertiary text-center">Date</CTableHeaderCell>
-                  <CTableHeaderCell className="bg-body-tertiary text-center">
+                  <CTableHeaderCell className="date-column bg-body-tertiary text-center">
+                    Date
+                  </CTableHeaderCell>
+                  <CTableHeaderCell className="description-column bg-body-tertiary text-center">
                     Description
                   </CTableHeaderCell>
                 </CTableRow>
@@ -243,10 +245,10 @@ const Dashboard = () => {
               <CTableBody className="text-nowrap">
                 {cvelistExample.map((item, index) => (
                   <CTableRow v-for="item in tableItems" key={index}>
-                    <CTableDataCell className="text-center">
-                      <p>{item.CVE_ID}</p>
+                    <CTableDataCell className="text-center cve-id-column">
+                      <p className="m-0">{item.CVE_ID}</p>
                     </CTableDataCell>
-                    <CTableDataCell className="text-center">
+                    <CTableDataCell className="severity-column text-center">
                       <CBadge
                         color={
                           item.Severity === 'High'
@@ -260,11 +262,11 @@ const Dashboard = () => {
                         {item.Severity}
                       </CBadge>
                     </CTableDataCell>
-                    <CTableDataCell className="text-center">
-                      <p>{item.Date}</p>
+                    <CTableDataCell className="date-column text-center">
+                      <p className="m-0">{item.Date}</p>
                     </CTableDataCell>
-                    <CTableDataCell className="text-ellipsis">
-                      <p>{item.Description}</p>
+                    <CTableDataCell className="description-column text-ellipsis">
+                      <p className="m-0">{item.Description}</p>
                     </CTableDataCell>
                   </CTableRow>
                 ))}
