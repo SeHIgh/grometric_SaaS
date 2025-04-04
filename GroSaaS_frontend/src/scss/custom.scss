@@ -81,6 +81,53 @@
               padding: 0;
               margin: 0;
             }
+            // 대시보드 - 차트 섹션
+            .chart-section {
+              flex-grow: 1;
+              background-color: rgb($dark, 0.1);
+              border-radius: 10px;
+              padding: 12px 0;
+              margin: 0;
+              & .col-3 {
+                min-height: 240px;
+                display: flex;
+              }
+              & .chart-card {
+                padding: 4px 8px;
+                cursor: pointer;
+                background-color: transparent;
+                border: 2px solid transparent;
+                flex-grow: 1;
+                min-height: 0; // flex-grow 사용 시 필요
+                transition: all 0.3s ease-in-out;
+                > .card-header {
+                  padding: 0;
+                  margin: 0;
+                  background-color: transparent;
+                  border: none;
+                }
+                > .card-body {
+                  padding: 0;
+                  margin: 0;
+                  background-color: transparent;
+                  border: none;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  justify-items: center;
+                }
+              }
+              & .chart-card:hover {
+                // background-color: rgba($dark, 0.1);
+                background-color: $light;
+              }
+              @include color-mode(dark) {
+                .chart-card:hover {
+                  // background-color: rgba($light, 0.1);
+                  background-color: $dark;
+                }
+              }
+            }
           }
           > .alert-section {
             grid-row: span 2; /* 두 열을 차지 */
@@ -129,28 +176,24 @@
 }
 // (끝) 템플릿 제공 컴포넌트 스타일 재정의
 
-// 대시보드 - 차트 섹션션
+// 대시보드 - 차트 섹션
 .chart-section {
   flex-grow: 1;
   background-color: rgb($dark, 0.1);
   border-radius: 10px;
   padding: 12px 0;
   margin: 0;
+  & .col-3 {
+    display: flex;
+  }
   & .chart-card {
+    // padding: 8px;
     cursor: pointer;
     background-color: transparent;
     border: 2px solid transparent;
     flex-grow: 1;
     min-height: 0; // flex-grow 사용 시 필요
     transition: all 0.3s ease-in-out;
-    > .card-header {
-      background-color: transparent;
-      border: none;
-    }
-    > .card-body {
-      background-color: transparent;
-      border: none;
-    }
   }
 }
 
@@ -163,10 +206,6 @@
 .chart-card:hover {
   // background-color: rgba($dark, 0.1);
   background-color: $light;
-  > .card-header {
-  }
-  > .card-body {
-  }
 }
 @include color-mode(dark) {
   .chart-card:hover {
@@ -257,7 +296,7 @@
   --cui-btn-border-color: #{$dark};
   --cui-btn-active-color: #{$light}; // 활성 상태 텍스트 색상
   --cui-btn-active-bg: #{$dark}; // 활성 상태 배경 색상
-  --cui-btn-active-border-color: #{$dark}; // 활성 상태 
+  --cui-btn-active-border-color: #{$dark}; // 활성 상태
 }
 @include color-mode(dark) {
   .btn {
@@ -274,7 +313,7 @@
 }
 
 @include color-mode(dark) {
-  .btn:hover{
+  .btn:hover {
     color: var(--cui-btn-active-bg);
     background-color: var(--cui-btn-active-color);
     border-color: var(--cui-btn-active-color);
